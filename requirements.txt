@@ -1,0 +1,10 @@
+flask
+flask_bcrypt
+flask_debugtoolbar
+flask_login
+flask_migrate
+flask_script
+flask_restful
+flask_sqlalchemy
+flask_wtf
+pytest
