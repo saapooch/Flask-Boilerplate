@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Flask-Boilerplate">
+  <meta name="author" content="Author">
+  <meta name="keywords" content="Flask, Boilerplate, Skeleton">
+  <title> Flask-Boilerplate </title>
+  <link rel="icon" href="{{url_for('static', filename='images/power-button.png')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  {% include 'header.html' %}
+
+      <div class='container-fluid'>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a> {{message}}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          </br>
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+
+        </div>
+
+  {% block js %} {% endblock %}
+
+  </div>
+  {% include 'footer.html' %}
+</body>
+
+</html>

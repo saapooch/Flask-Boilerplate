@@ -6,7 +6,6 @@ from flask_bcrypt import Bcrypt
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_mail import Mail
 import re
 
 
@@ -16,7 +15,7 @@ bcrypt = Bcrypt()
 toolbar = DebugToolbarExtension()
 db = SQLAlchemy()
 migrate = Migrate()
-mail = Mail()
+
 
 
 def create_app():
@@ -29,31 +28,29 @@ def create_app():
 
     # set config
     app_settings = os.getenv(
-        'APP_SETTINGS', 'datanator_website.server.config.DevelopmentConfig')
+        'APP_SETTINGS', 'app.server.config.DevelopmentConfig')
     app.config.from_object(app_settings)
 
     # set up extensions
     login_manager.init_app(app)
     bcrypt.init_app(app)
     toolbar.init_app(app)
-    mail.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
 
     # register blueprints
-    from datanator_website.server.main.views import main_blueprint
+    from app.server.main.views import main_blueprint
     app.register_blueprint(main_blueprint)
 
 
     # flask login
-    from datanator_website.server.model import User
+    from app.server.model import User
     login_manager.login_view = 'user.login'
     login_manager.login_message_category = 'danger'
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.filter(User.id == int(user_id)).first()
-
 
     @app.errorhandler(401)
     def unauthorized_page(error):
