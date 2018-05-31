@@ -5,15 +5,12 @@ import datetime
 
 class User(db.Model):
 
-    __bind_key__ = 'data'
-
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(255), unique=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
     registered_on = db.Column(db.DateTime)
     admin = db.Column(db.Boolean , default=False)
-    cart = db.relationship('ShoppingCart', backref='user')
 
     def __init__(self, username, email, password, admin=False):
         self.username = username

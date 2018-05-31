@@ -17,17 +17,15 @@ def create_db():
     """Creates the db tables."""
     db.create_all()
 
-
 @manager.command
 def drop_db():
     """Drops the db tables."""
     db.drop_all()
 
-
 @manager.command
 def create_admin():
     """Creates the admin user."""
-    db.session.add(User(email='ad@min.com', password='admin', admin=True))
+    db.session.add(User(username='admin', email='ad@min.com', password='admin', admin=True))
     db.session.commit()
 
 

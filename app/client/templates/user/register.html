@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row" style='margin:10vh 0px'>
+    <div class="col-6 mx-auto" >
+      <h3> Register </h3>
+      <form role="form" name='form' method="POST" action="/register_confirm">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag()}}
+        <div> Username </div>
+        <div class="input-group form-group">
+            {{ form.username(type="text", class="form-control pt-sans-black", placeholder="username")}}
+        </div>
+        <div> Email </div>
+        <div class="input-group form-group">
+            {{ form.email(type="text", class="form-control pt-sans-black", placeholder="email")}}
+        </div>
+        <div> Password </div>
+        <div class="input-group form-group">
+            {{ form.password(type="password", input="password", class="form-control pt-sans-black", placeholder="password")}}
+        </div>
+        <div> Confirm Password </div>
+        <div class="input-group form-group">
+            {{ form.confirm(type="password", input="password", class="form-control pt-sans-black", placeholder="confirm password")}}
+        </div>
+        <button class="btn btn-dark" type="button submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

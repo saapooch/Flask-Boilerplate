@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+  <div class="row" style='margin:15vh 0px'>
+    <div class="col-6 mx-auto my-auto">
+      <h4> Log In </h4>
+      <form role="form" method="POST" action="/login">
+        {{ form.csrf_token }}
+        <div> Username </div>
+        <div class="input-group form-group">
+            {{ form.username(type="text", class="form-control pt-sans-black", placeholder="email")}}
+        </div>
+        <div> Password </div>
+        <div class="input-group form-group">
+            {{ form.password(type="password", class="form-control pt-sans-black", placeholder="password")}}
+        </div>
+        <button class="btn btn-dark" type="submit">Submit</button>
+      </form>
+      <div style="padding:30px 0px 0px"> Don't have a log in? <a href='/register'> Register Here </a></div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

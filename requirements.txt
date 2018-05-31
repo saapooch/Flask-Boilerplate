@@ -9,3 +9,4 @@ flask_sqlalchemy
 flask_wtf
 pytest
 unittest
+flask_testing
