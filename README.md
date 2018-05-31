@@ -47,11 +47,18 @@ This repository includes:
   pip3 install -r requirements.txt
   ```
   
-  Create the database and run the application on a local server:
+  Create the database and establish and administrator:
   ```
   python3 manage.py create_db
+  python3 manage.py create_admin
+  ```
+  
+  Run the application on a local server:
+  ```
   python3 manage.py runserver
   ```
+  
+  Go to the [application](http://127.0.0.1:5000/)
  
 ## Tests
 We recommend using `pytest` to run these tests as follows:
